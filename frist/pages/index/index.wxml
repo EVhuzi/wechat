@@ -1,0 +1,63 @@
+<!--index.wxml-->
+<!--框架最大的特点就是让我们开发者必须按照特定的方法编写代码-->
+<!--
+  1.数据在哪
+  2.绑定到哪里去-->
+<view class="container">
+  <text>{{message}}</text>
+<!-- 
+  mustachen语法可以用在：
+    1.innerHTML（类似）
+    2.元素的属性上
+  不能用在标签名的属性名上
+
+  可以直接使用字面量和简单的逻辑运算符
+ -->
+  <text>{{ 100 > 50 ? 'Y':'N'}}</text>
+  <view class='world'>{{ ViewClassName }}</view>
+
+<!-- 
+  当语法解析误解了true/false
+  可以使用{{}}解决  
+ -->
+  <checkbox checked="{{ false }}"></checkbox>
+
+  <!-- 
+    列表数据渲染
+   -->
+   <view>
+      <!-- <view>
+        <checkbox></checkbox>
+        <text>javascrapt</text>
+      </view>
+      <view>
+        <checkbox checked='{{true}}'></checkbox>
+        <text>HTML</text>
+      </view>
+      <view>
+        <checkbox></checkbox>
+        <text>CSS</text>
+      </view> -->
+      <view wx:for="{{ todo }}" wx:for-item="aaa" wx:for-index="bbb">
+        <checkbox checked='{{ item.completed }}'></checkbox>
+        <text>{{ aaa.name }}</text>
+        <text>{{ bbb }}</text>
+        <!-- 如果全局属性中有item这种关键字 -->
+      </view>
+      <!-- 
+        明确页面结构中的循环体
+        删除多余的重复内容，只保留一个
+        在剩下的这个上加上wx:for属性，属性值等于遍历的数据源，数据源必须是一个数组
+        在这个标签（循环体）内部使用item代表当前被遍历的元素
+        给被遍历到的对象定义名称：wx:for-item
+        给遍历的下标（索引）定义名称：wx:for-index
+       -->
+       <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="i">
+        <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="j">
+          <view wx:if="{{i <= j}}">
+            {{i}} * {{j}} = {{i * j}}
+          </view>
+        </view>
+      </view>
+   </view>
+</view>

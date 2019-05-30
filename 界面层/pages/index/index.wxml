@@ -1,0 +1,16 @@
+<!--index.wxml-->
+
+<view class="container">
+<!-- 基本的事件使用就是通过给组件添加一个bind+事件名 的属性，属性的值指向一个定义在当前页面对象中的js方法 -->
+    <!-- <button bindtap='buttonTapHandle'>点我</button> -->
+
+    <!-- 事件冒泡 -->
+    <!-- <view bindtap='outHandle' style='width:200px; height:200px; background-color:red'>
+      <view catchtap='innerHandle' style='width:100px; height:100px; background-color:blue'></view>
+    </view> -->
+    <!-- catchtap事件名 是阻止冒泡并且绑定事件 -->
+
+    <!-- 事件传参 -->
+    <button bindtap='tap2Handle' data-name='张三'>tap2</button>
+    <button bindtap='tap2Handle' data-name-hello='张三'>tap2</button>
+</view>
